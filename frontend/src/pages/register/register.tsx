@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { Link } from 'react-router';
 import logo from '../../assets/logo.png';
-import { Input } from '../input/input';
+import { Input } from '../../components/input/input';
+
 
 
 export default function Register() {
@@ -21,7 +23,7 @@ export default function Register() {
     return (
         <form className="flex h-screen items-center justify-center bg-[#161410]" onSubmit={handleSubmit}>
             <div className="flex flex-col items-center justify-center gap-2">
-                <img src={logo} className='mb-4' />
+                <Link to="/"><img src={logo} className='mb-4' /></Link>
                 <Input type="text" title="Digite seu nome..." onChange={(e) => setNome(e.target.value)} />
                 <Input type="email" title="E-mail..." onChange={(e) => setEmail(e.target.value)} />
                 <Input type="password" title="Digite sua senha..." onChange={(e) => setSenha(e.target.value)} />
