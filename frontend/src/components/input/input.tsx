@@ -9,7 +9,7 @@ export function Input({ type, title, ...rest }: InputProps) {
             type={type}
             placeholder={title}
             {...rest} // ✅ repassa todas as outras props nativas (onChange, value, etc.)
-            className="w-87.5 py-2 text-sm bg-white px-2 outline-none rounded-md text-[#32343E] placeholder-[#32343E]"
+            className="w-87.5 py-3 text-sm bg-white px-2 outline-none rounded-md text-[#32343E] placeholder-[#32343E]"
         />
     )
 }

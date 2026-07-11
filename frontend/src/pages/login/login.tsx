@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import logo from '../../assets/logo.png';
+import Button from '../../components/button/button';
 import { Input } from '../../components/input/input';
 
 
@@ -23,9 +24,8 @@ export default function Login() {
                 <Link to="/"><img src={logo} className='mb-4' /></Link>
                 <Input type="email" title="E-mail..." onChange={(e) => setEmail(e.target.value)} />
                 <Input type="password" title="Digite sua senha..." onChange={(e) => setSenha(e.target.value)} />
-                <button
-                    type="submit"
-                    className="w-full bg-[#C92A0E] rounded-md py-1 text-white text-sm font-bold cursor-pointer">Login</button>
+                <Button title="Login" variant='default' />
+                <Button title="Não tenho uma conta" variant='outline' />
             </div>
 
         </form>

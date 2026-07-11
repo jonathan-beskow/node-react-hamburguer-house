@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router';
 import logo from '../../assets/logo.png';
+import Button from '../../components/button/button';
 import { Input } from '../../components/input/input';
 
 
@@ -29,9 +30,8 @@ export default function Register() {
                 <Input type="password" title="Digite sua senha..." onChange={(e) => setSenha(e.target.value)} />
                 <Input type="password" title="Confirme sua senha..." onChange={(e) => setConfirmsenha(e.target.value)} />
                 <Input type="text" title="Digite seu CEP..." onChange={(e) => setCep(e.target.value)} />
-                <button
-                    type="submit"
-                    className="w-full bg-[#C92A0E] rounded-md py-1 text-white text-sm font-bold cursor-pointer">Cadastrar</button>
+                <Button title='Criar Conta' />
+                <Button title='Já tenho uma conta' variant='outline' />
             </div>
 
         </form>
