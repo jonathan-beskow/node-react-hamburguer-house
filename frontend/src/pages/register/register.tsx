@@ -31,7 +31,9 @@ export default function Register() {
                 <Input type="password" title="Confirme sua senha..." onChange={(e) => setConfirmsenha(e.target.value)} />
                 <Input type="text" title="Digite seu CEP..." onChange={(e) => setCep(e.target.value)} />
                 <Button title='Criar Conta' />
-                <Button title='Já tenho uma conta' variant='outline' />
+                <Link to="/login" className='w-full'>
+                    <Button title='Já tenho uma conta' variant='outline' />
+                </Link>
             </div>
 
         </form>

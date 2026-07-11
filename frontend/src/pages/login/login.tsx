@@ -25,7 +25,9 @@ export default function Login() {
                 <Input type="email" title="E-mail..." onChange={(e) => setEmail(e.target.value)} />
                 <Input type="password" title="Digite sua senha..." onChange={(e) => setSenha(e.target.value)} />
                 <Button title="Login" variant='default' />
-                <Button title="Não tenho uma conta" variant='outline' />
+                <Link to="/register" className='w-full'>
+                    <Button title="Não tenho uma conta" variant='outline' />
+                </Link>
             </div>
 
         </form>
