@@ -21,18 +21,21 @@ export default function Register() {
             verifyInfo();
             const response = await sendRequest('http://localhost:3000/register', 'POST', { name, email, password, cep })
             switch (response.status) {
-                case 409:
-                    setError("E-mail já cadastrado");
-                    break;
-                case 400:
-                    setError("Todas as informações são obrigatórias");
-                    break;
                 case 201:
                     setName("");
                     setEmail("");
                     setPassword("");
                     setConfirmsenha("")
                     setCep("");
+                    break;
+                case 409:
+                    setError("E-mail já cadastrado");
+                    break;
+                case 400:
+                    setError("Todas as informações são obrigatórias");
+                    break;
+                case 401:
+                    setError("Usuário ou senha inválidos");
                     break;
                 case 500:
                     setError("Tente novamente mais tarde");
@@ -74,8 +77,8 @@ export default function Register() {
                 <Link to="/"><img src={logo} className='mb-4 mx-auto' /></Link>
                 <Input type="text" value={name} title="Digite seu nome..." onChange={(e) => setName(e.target.value)} />
                 <Input type="email" value={email} title="E-mail..." onChange={(e) => setEmail(e.target.value)} />
-                <Input type="password" value={confirmsenha} title="Digite sua senha..." onChange={(e) => setPassword(e.target.value)} />
-                <Input type="password" value={password} title="Confirme sua senha..." onChange={(e) => setConfirmsenha(e.target.value)} />
+                <Input type="password" value={password} title="Digite sua senha..." onChange={(e) => setPassword(e.target.value)} />
+                <Input type="password" value={confirmsenha} title="Confirme sua senha..." onChange={(e) => setConfirmsenha(e.target.value)} />
                 <Input type="text" value={cep} title="Digite seu CEP..." onChange={(e) => setCep(e.target.value)} />
                 <p className='font-bold text-red-500'>{error}</p>
                 <div className='w-full mt-2 gap-2 flex flex-col'>
