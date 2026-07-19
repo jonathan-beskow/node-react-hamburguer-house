@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import logo from '../../assets/logo.png';
 import Button from '../../components/button/button';
 import { Input } from '../../components/input/input';
@@ -11,22 +11,20 @@ export default function Login() {
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
     const [error, setError] = useState("");
-
+    const navigate = useNavigate();
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
 
         try {
-
-
             if (!email || !senha) {
                 setError("E-mail e senha são obrigatórios");
                 return;
             }
-
             const response = await fetch('http://localhost:3000/login', {
                 method: "POST",
                 headers: { "Content-type": "application/json" },
-                body: JSON.stringify({ email, senha })
+                body: JSON.stringify({ email, senha }),
+                credentials: "include"
             });
 
             if (response.status === 404) {
@@ -37,8 +35,14 @@ export default function Login() {
                 setError("Usuário/senha incorretos");
                 return;
             }
+
+            if (response.status === 401) {
+                setError("Usuário/senha incorretos");
+                return;
+            }
             if (response.status === 200) {
                 setError("");
+                navigate("/")
             }
 
 
