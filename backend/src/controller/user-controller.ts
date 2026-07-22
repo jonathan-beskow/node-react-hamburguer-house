@@ -1,5 +1,5 @@
 import bcrypt from "bcrypt";
-import { type Request, type Response } from "express";
+import { type NextFunction, type Request, type Response } from "express";
 import jwt from "jsonwebtoken";
 import { prisma } from "../db.js";
 
@@ -81,5 +81,34 @@ export const register = async (req: Request, resp: Response) => {
   } catch (error) {
     resp.status(500).json({ message: "Erro no servidor" });
     return;
+  }
+};
+
+export const auth = async (
+  req: Request,
+  resp: Response,
+  next: NextFunction,
+) => {
+  try {
+    const token = req.cookies.user;
+    if (!process.env.JWT_SECRET) {
+      return;
+    }
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = decoded;
+    resp.status(200).json(decoded);
+    next();
+  } catch (error) {
+    resp.status(500).json({ message: "Erro no servidor" });
+    return;
+  }
+};
+
+export const logout = async (req: Request, resp: Response) => {
+  const { user } = req.cookies;
+
+  if (user) {
+    resp.clearCookie("user");
+    resp.json({ message: "Usuário deslogado" });
   }
 };
