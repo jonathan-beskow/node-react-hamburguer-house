@@ -1,7 +1,7 @@
 export default function Pedidos() {
     return (
-        <div>
-            <h1>Pedidos</h1>
+        <div className="text-white">
+            <h1>Rota de pedidos</h1>
         </div>
     );
 }
