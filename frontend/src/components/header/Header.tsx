@@ -68,25 +68,28 @@ export function Header() {
         </Link>
         {user ? (
           <div className="flex items-center gap-8 text-white">
-            <div className="flex items-center gap-2 text-[#F2DAAC]">
-              <Link to="/">
-                <div className={getNavItemClass("/")}>
-                  <Box size={18} />
-                </div>
-              </Link>
+            {user.admin && (
+              <div className="flex items-center gap-2 text-[#F2DAAC]">
+                <Link to="/">
+                  <div className={getNavItemClass("/")}>
+                    <Box size={18} />
+                  </div>
+                </Link>
 
-              <Link to="/pedidos">
-                <div className={getNavItemClass("/pedidos")}>
-                  <LayoutDashboard size={18} />
-                </div>
-              </Link>
+                <Link to="/pedidos">
+                  <div className={getNavItemClass("/pedidos")}>
+                    <LayoutDashboard size={18} />
+                  </div>
+                </Link>
 
-              <Link to="">
-                <div className={baseClass}>
-                  <Plus size={18} />
-                </div>
-              </Link>
-            </div>
+                <Link to="">
+                  <div className={baseClass}>
+                    <Plus size={18} />
+                  </div>
+                </Link>
+              </div>
+            )}
+
             <div className="relative cursor-pointer">
               <ShoppingCart size={18} />
               <p className="absolute -top-4 -right-4 flex h-5 w-5 items-center justify-center rounded-full bg-[#F2DAAC] p-1 text-[#161410]">
