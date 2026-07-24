@@ -67,7 +67,7 @@ export function Header() {
           <img src={logo} />
         </Link>
         {user ? (
-          <div className="flex items-center gap-8 text-white">
+          <div className="md:flex hidden items-center gap-8 text-white">
             {user.admin && (
               <div className="flex items-center gap-2 text-[#F2DAAC]">
                 <Link to="/">
