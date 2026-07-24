@@ -8,7 +8,7 @@ export default function Home() {
 
 
   const handleChangeCategory = (newcategory: string) => {
-
+    setCategory(newcategory)
   }
 
   const getCategoryClass = (categoryName: string) => {
